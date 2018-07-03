@@ -1,0 +1,124 @@
+.canvas-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+canvas.theme1 {
+    background-image:
+        -moz-linear-gradient(45deg, #494949 25%, transparent 25%),
+        -moz-linear-gradient(-45deg, #494949 25%, transparent 25%),
+        -moz-linear-gradient(45deg, transparent 75%, #494949 75%),
+        -moz-linear-gradient(-45deg, transparent 75%, #494949 75%),
+        -moz-linear-gradient(0deg, #666666 25%, transparent 25%),
+        -moz-linear-gradient(0deg, transparent 75%, #666666 75%);
+    background-image:
+        -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #494949), color-stop(.25, transparent)),
+        -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #494949), color-stop(.25, transparent)),
+        -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #494949)),
+        -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #494949)),
+        -webkit-gradient(linear, 0 0, 0 0, color-stop(.25, #666666), color-stop(.25, transparent)),
+        -webkit-gradient(linear, 0 0, 0 0, color-stop(.75, transparent), color-stop(.75, #666666));
+
+    -moz-background-size: 32px 32px;
+    background-size: 32px 32px;
+    -webkit-background-size: 32px 32px; /* override value for shitty webkit */
+
+    background-position: 0 0, 16px 0, 16px -16px, 0px 16px;
+
+    border: 3px solid black;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.canvas-right-toolbox, .canvas-left-toolbox {
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    opacity: 0.7;
+    background-color: black;
+    top: 0;
+    display: none;
+}
+
+.canvas-right-toolbox {
+    right: 0;
+}
+
+.canvas-right-toolbox.open {
+    animation-fill-mode: forwards;
+    -webkit-animation-name: toolbox-right-open;
+    -webkit-animation-duration: 1s;
+    animation-name: toolbox-right-open;
+    animation-duration: 1s;
+}
+
+.canvas-right-toolbox.close {
+    animation-fill-mode: forwards;
+    -webkit-animation-name: toolbox-right-close;
+    -webkit-animation-duration: 1s;
+    animation-name: toolbox-right-close;
+    animation-duration: 1s;
+}
+
+.canvas-left-toolbox {
+    left: 0;
+}
+
+.canvas-left-toolbox.open {
+    animation-fill-mode: forwards;
+    -webkit-animation-name: toolbox-left-open;
+    -webkit-animation-duration: 1s;
+    animation-name: toolbox-left-open;
+    animation-duration: 1s;
+}
+
+.canvas-left-toolbox.close {
+    animation-fill-mode: forwards;
+    -webkit-animation-name: toolbox-left-close;
+    -webkit-animation-duration: 1s;
+    animation-name: toolbox-left-close;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes toolbox-right-open {
+    from { right: -200px; }
+    to { right: 0; }
+}
+
+@keyframes toolbox-right-open {
+    from { right: -200px; }
+    to { right: 0; }
+}
+
+@-webkit-keyframes toolbox-right-close {
+    from { right: 0; }
+    to { right: -200px; }
+}
+
+@keyframes toolbox-right-close {
+    from { right: 0; }
+    to { right: -200px; }
+}
+
+@-webkit-keyframes toolbox-left-open {
+    from { left: -200px; }
+    to { left: 0; }
+}
+
+@keyframes toolbox-left-open {
+    from { left: -200px; }
+    to { left: 0; }
+}
+
+@-webkit-keyframes toolbox-left-close {
+    from { left: 0; }
+    to { left: -200px; }
+}
+
+@keyframes toolbox-left-close {
+    from { left: 0; }
+    to { left: -200px; }
+}
+
