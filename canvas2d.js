@@ -220,8 +220,18 @@ var Sprite2D = function(image, xFrames, yFrames, posX, posY, scale) {
     [].forEach.call(
         document.querySelectorAll("canvas[canvas2d]"),
         function(canvas) {
+            var canvasName = canvas.getAttribute("canvas2d");
+
+            if (canvasName === "") {
+                console.warn("\"canvas2d\" attribute for canvas cannot be empty.");
+                return;
+            } else if (typeof canvases[canvasName] !== "undefined") {
+                console.warn("Canvas with attribute \"canvas2d\" equal to " + canvasName + " already defined.\nOnly the first one defined will be considered.")
+                return;
+            }
+
             var newCanvas = new Canvas(canvas);
-            canvases[canvas.getAttribute("canvas2d")] = newCanvas;
+            canvases[canvasName] = newCanvas;
 
             if (canvas.getAttribute("open-right") !== null) {
                 newCanvas.showToolbox("right");
@@ -243,10 +253,10 @@ var Sprite2D = function(image, xFrames, yFrames, posX, posY, scale) {
             var canvasName = img.getAttribute("canvas");
 
             if (canvasName === null || canvasName === "") {
-                console.warn("\"canvas\" attribute for image " + img.src + " not defined or empty");
+                console.warn("\"canvas\" attribute for image " + img.src + " not defined or empty.");
                 return;
             } else if (typeof canvases[canvasName] === "undefined") {
-                console.warn("Canvas with name \"" + canvasName + "\" does not exist (image: " + img.src + ")");
+                console.warn("Canvas with name \"" + canvasName + "\" does not exist (image: " + img.src + ").");
                 return;
             }
 
