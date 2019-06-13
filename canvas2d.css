@@ -122,3 +122,6 @@ canvas.theme1 {
     to { left: -200px; }
 }
 
+img[sprite2d] {
+    display: none;
+}
